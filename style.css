@@ -1,0 +1,570 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #0056b3;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: auto;
+}
+
+section {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.exercicio-card {
+    border-left: 5px solid #007bff;
+    padding-left: 15px;
+}
+
+h1, h2, h3 {
+    color: #0056b3;
+}
+
+.ferramenta-container {
+    background-color: #e9ecef;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.ferramenta-container label {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+.ferramenta-container input[type="number"] {
+    padding: 8px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 80px;
+}
+
+.ferramenta-container button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.ferramenta-container button:hover {
+    background-color: #218838;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+    margin-top: 30px;
+}
+
+.toggle-code-btn {
+    background-color: #6c757d; /* Cinza para distinção */
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    margin-bottom: 5px; /* Espaço entre o botão e o código */
+    display: block; /* Para o botão ocupar a largura total e não ficar ao lado do texto */
+    width: fit-content; /* Ocupa apenas a largura do seu conteúdo */
+}
+
+.toggle-code-btn:hover {
+    background-color: #5a6268;
+}
+
+.code-display {
+    background-color: #272822; /* Fundo escuro para o código */
+    color: #f8f8f2; /* Cor clara para o texto do código */
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto; /* Para rolagem horizontal se o código for muito longo */
+    font-family: 'Consolas', 'Monaco', monospace; /* Fonte monoespaçada */
+    font-size: 0.9em;
+    display: none; /* ESCONDE O CÓDIGO POR PADRÃO */
+    white-space: pre-wrap; /* Mantém a formatação e quebra linhas longas */
+    word-wrap: break-word; /* Quebra palavras muito longas */
+}
+
+.playground-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os itens se quebrem em linhas menores */
+    gap: 20px; /* Espaço entre as colunas */
+    margin-top: 20px;
+    justify-content: center; /* Centraliza os itens quando há espaço */
+}
+
+.paleta-blocos, .area-programacao {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    flex: 1; /* Faz com que os itens tentem ocupar o mesmo espaço */
+    min-width: 280px; /* Largura mínima para cada coluna */
+    max-width: 350px; /* Largura máxima para cada coluna */
+}
+
+.area-jogo {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    flex: 1; /* Faz com que os itens tentem ocupar o mesmo espaço */
+    min-width: 500px; /* Largura mínima para cada coluna */
+    max-width: 350px;
+}
+
+.paleta-blocos h4, .area-programacao h4, .area-jogo h4 {
+    color: #007bff;
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+/* Estilo dos Blocos de Comando */
+.bloco {
+    background-color: #28a745; /* Verde */
+    color: white;
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    cursor: grab;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    transition: background-color 0.2s ease;
+}
+
+.bloco:hover {
+    background-color: #218838;
+}
+
+.bloco.bloco-loop {
+    background-color: #ffc107; /* Amarelo/Laranja para loops */
+    color: #333;
+    /* Adicione uma borda para diferenciar loops */
+    border: 2px dashed #e0a800;
+}
+
+.bloco.bloco-loop:hover {
+    background-color: #e0a800;
+}
+
+/* Área de Programação (onde os blocos são soltos) */
+.area-programacao {
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza os blocos horizontalmente */
+    gap: 5px; /* Espaço entre os blocos soltos */
+    background-color: #e9ecef; /* Um cinza mais claro */
+    border: 2px dashed #007bff; /* Borda tracejada para indicar área de drop */
+}
+
+.placeholder-area {
+    color: #999;
+    font-style: italic;
+    margin-top: 50px; /* Para centralizar o placeholder */
+}
+
+/* Estilo para quando um bloco está sendo arrastado sobre a área de drop */
+.area-programacao.drag-over {
+    border-color: #28a745;
+    background-color: #d4edda;
+}
+
+#mapa {
+    width: 450px; /* Aumentado de 250px para 450px */
+    height: 450px; /* Aumentado de 250px para 450px */
+    background-color: #f0f0f0;
+    border: 2px solid #333;
+    position: relative;
+    overflow: hidden; /* Garante que o carrinho não apareça fora do mapa */
+}
+
+/* Opcional: Se você tiver linhas ou grade no mapa, ajuste-as também */
+/* Exemplo para linhas de grade, se você estiver usando background-size */
+#mapa {
+    /* Exemplo: Se sua grade era de 50px em um mapa de 250px (5x5 blocos) */
+    /* Agora para 450px e passos de 50px, você terá 9x9 blocos (450/50=9) */
+    background-image:
+        linear-gradient(to right, #ccc 1px, transparent 1px),
+        linear-gradient(to bottom, #ccc 1px, transparent 1px);
+    background-size: 50px 50px; /* Mantém o tamanho do passo para a grade */
+}
+
+/* Certifique-se de que o carrinho tenha um tamanho razoável em relação ao mapa */
+#carrinho {
+    width: 30px; /* Levemente aumentado para se adequar ao mapa maior */
+    height: 30px;
+    background-color: #dc3545;
+    position: absolute;
+    transition: left 0.6s ease-out, top 0.6s ease-out, transform 0.6s ease-out;
+    transform-origin: center center;
+    border-radius: 5px; /* Para um visual mais de "carrinho" */
+}
+
+#carrinho::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 10px solid rgba(0,0,0,0.3);
+    z-index: 1;
+}
+
+#ponto-chegada {
+    width: 25px;
+    height: 25px;
+    background-color: #007bff; /* Azul para o ponto de chegada */
+    border-radius: 50%; /* Faz um círculo */
+    position: absolute;
+    top: 20px; /* Exemplo de posição */
+    left: 200px; /* Exemplo de posição */
+    border: 2px dashed #fff;
+    opacity: 0.7;
+}
+
+
+/* Controles do Playground */
+.controles-playground {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.controles-playground button {
+    background-color: #007bff; /* Azul */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin: 0 5px;
+    transition: background-color 0.2s ease;
+}
+
+.controles-playground button:hover {
+    background-color: #0056b3;
+}
+
+.bloco-programa {
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    cursor: grab; /* Para indicar que é arrastável */
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.bloco-programa:hover {
+    transform: translateY(-2px); /* Pequeno efeito ao passar o mouse */
+}
+
+/* Estilos específicos para cada tipo de bloco, para diferenciá-los visualmente */
+.bloco-mover {
+    background-color: #28a745; /* Verde */
+    color: white;
+}
+
+.bloco-virar {
+    background-color: #007bff; /* Azul */
+    color: white;
+}
+
+.bloco-loop {
+    background-color: #ffc107; /* Amarelo/Laranja */
+    color: #333; /* Texto escuro para contraste */
+    border: 2px dashed #e0a800; /* Borda tracejada para loops */
+}
+
+/* Estilo para a área de programação quando um item está sendo arrastado sobre ela */
+.area-programacao.drag-over {
+    border-color: #28a745; /* Borda verde quando arrastando sobre */
+    background-color: #d4edda; /* Fundo verde claro */
+}
+
+/* Estilo para o placeholder na área de programação */
+.placeholder-area {
+    color: #999;
+    font-style: italic;
+    margin-top: 50px;
+    text-align: center;
+    width: 100%;
+}
+
+#gameOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Garante que o overlay esteja acima de tudo */
+}
+
+#gameOverlay.hidden {
+    display: none;
+}
+
+/* Caixa de Mensagem */
+#messageBox {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    width: 90%;
+}
+
+#messageBox h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+
+#messageBox p {
+    color: #555;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+#messageBox button {
+    background-color: #28a745; /* Cor verde para botões de sucesso */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+#messageBox button:hover {
+    background-color: #218838; /* Verde mais escuro no hover */
+}
+
+#messageBox button.hidden {
+    display: none;
+}
+
+/* Estilo para botão de tentar novamente (se houver um erro) */
+#restartLevelButton {
+    background-color: #dc3545; /* Cor vermelha para botão de erro */
+}
+
+#restartLevelButton:hover {
+    background-color: #c82333;
+}
+
+#mainTitle {
+    font-family: 'Arial Black', sans-serif;
+    font-size: 3.5em;
+    color: #4CAF50;
+    text-align: center;
+    margin: 30px 0;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+    animation: fadeInDown 1s ease-out;
+}
+
+header {
+    background-color: #f8f8f8;
+    padding: 20px 0;
+    border-bottom: 2px solid #eee;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilo para o Carrinho */
+#carrinho {
+    width: 30px; /* Ajustado para CAR_SIZE */
+    height: 30px; /* Ajustado para CAR_SIZE */
+    background-color: #f00; /* Vermelho vibrante */
+    border-radius: 5px; /* Bordas levemente arredondadas */
+    position: absolute;
+    transition: left 0.6s ease-out, top 0.6s ease-out, transform 0.6s ease-out; /* Transições suaves */
+    z-index: 10; /* Garante que o carrinho fique sobre o mapa */
+}
+
+/* Estilo para o ALVO */
+#target {
+    width: 30px; /* Mesmo tamanho do carrinho para fácil colisão */
+    height: 30px;
+    background-color: #00f; /* Azul para o alvo */
+    border-radius: 50%; /* Torna-o um círculo */
+    position: absolute;
+    z-index: 5; /* Abaixo do carrinho */
+    transition: left 0.3s ease-out, top 0.3s ease-out; /* Animação para mudança de posição */
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.7); /* Efeito de brilho */
+}
+
+/* Estilo para o Overlay de Mensagem */
+#gameOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#gameOverlay.hidden {
+    display: none;
+}
+
+#messageBox {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    max-width: 400px;
+    transform: scale(0.9);
+    animation: popIn 0.3s forwards;
+}
+
+#messageBox h2 {
+    color: #4CAF50; /* Cor do sucesso */
+    margin-bottom: 15px;
+    font-size: 2em;
+}
+
+#messageBox p {
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+#closeOverlayButton {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+#closeOverlayButton:hover {
+    background-color: #45a049;
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Estilo para o placeholder na área de programação */
+.placeholder-area {
+    color: #999;
+    font-style: italic;
+    margin-top: 50px;
+    text-align: center;
+    width: 100%;
+}
+
+/* Estilo base para os blocos na área de programação */
+.bloco-programa {
+    padding: 10px 15px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    cursor: grab; /* Para indicar que é arrastável */
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.bloco-programa:hover {
+    transform: translateY(-2px); /* Pequeno efeito ao passar o mouse */
+}
+
+/* Estilos específicos para cada tipo de bloco, para diferenciá-los visualmente */
+.bloco-mover {
+    background-color: #28a745; /* Verde */
+    color: white;
+}
+
+.bloco-virar {
+    background-color: #007bff; /* Azul */
+    color: white;
+}
+
+.bloco-loop {
+    background-color: #ffc107; /* Amarelo/Laranja */
+    color: #333; /* Texto escuro para contraste */
+    border: 2px dashed #e0a800; /* Borda tracejada para loops */
+}
+
+/* Estilo para a área de programação quando um item está sendo arrastado sobre ela */
+.area-programacao.drag-over {
+    border-color: #28a745; /* Borda verde quando arrastando sobre */
+    background-color: #d4edda; /* Fundo verde claro */
+}
+
+/* Opcional: Estilo para o corpo quando arrastando um bloco para fora (para remoção) */
+body.dragging-outside-area {
+    background-color: #ffe0e0; /* Fundo avermelhado para indicar área de descarte */
+    border: 2px dashed #dc3545;
+}

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projeto de Extensão - Lógica de Programação Interativa</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 id="mainTitle">Lógica de Programação Interativa</h1>
+    </header>
+
+<body>
+    <header>
+        <h1>Bem-vindo ao Nosso Laboratório de Lógica de Programação!</h1>
+        <p>Aprenda de forma interativa e divertida os conceitos fundamentais.</p>
+    </header>
+
+    <main>
+        <section id="introducao">
+            <h2>Por que aprender Lógica de Programação?</h2>
+            <p>A lógica de programação é a base para qualquer linguagem de programação. Ela te ajuda a pensar de forma
+                organizada, a resolver problemas complexos e a criar soluções eficientes para o dia a dia. Mesmo que
+                você não queira ser um programador, o pensamento lógico é uma habilidade valiosa!</p>
+        </section>
+
+        <section class="exercicio-card">
+            <h3>Exercício 1: Contando com os Loops: Progressivo e Regressivo</h3>
+            <p><strong>Introdução Teórica:</strong> Neste exercício, vamos aprender sobre os <em>loops</em>, que são
+                estruturas de programação que nos permitem repetir um conjunto de instruções várias vezes. Os loops são
+                essenciais para automatizar tarefas repetitivas. Vamos usar o loop <em>for</em>, que é um dos mais
+                comuns.</p>
+            <p><strong>Objetivo:</strong> Aprender a usar loops para contagens (progressiva e regressiva).</p>
+            <div class="ferramenta-container">
+                <label for="inicio1">Início:</label>
+                <input type="number" id="inicio1" value="1">
+                <label for="fim1">Fim:</label>
+                <input type="number" id="fim1" value="10">
+                <button onclick="contar()">Contar</button>
+                <p><strong>Resultado:</strong> <span id="resultado1"></span></p>
+            </div>
+            <p><strong>Instruções:</strong> Insira um número no campo 'Início' e outro no campo 'Fim', depois clique em
+                'Contar'.</p>
+            <p><strong>Exemplo:</strong> Início: 1, Fim: 5 -> Saída: 1 2 3 4 5</p>
+
+            <button class="toggle-code-btn" data-target="code1">Ver Código</button>
+            <pre class="code-display" id="code1"><code>
+function contar() {
+  let inicio = parseInt(document.getElementById("inicio1").value);
+  let fim = parseInt(document.getElementById("fim1").value);
+  let resultado = document.getElementById("resultado1");
+
+  resultado.innerHTML = ""; // Limpa o resultado anterior
+
+  if (isNaN(inicio) || isNaN(fim)) {
+    resultado.innerHTML = "Por favor, insira números válidos.";
+    return;
+  }
+
+  if (inicio < fim) {
+    for (let i = inicio; i <= fim; i++) {
+      resultado.innerHTML += i + " ";
+    }
+  } else if (inicio > fim) {
+    for (let i = inicio; i >= fim; i--) {
+      resultado.innerHTML += i + " ";
+    }
+  } else {
+    resultado.innerHTML = "Os números são iguais!";
+  }
+}
+            </code></pre>
+        </section>
+
+        <section class="exercicio-card">
+            <h3>Exercício 2: Dominando a Tabuada com Loops</h3>
+            <p><strong>Introdução Teórica:</strong> Vamos continuar usando o loop <em>for</em> para realizar cálculos
+                matemáticos repetitivos. A tabuada é um exemplo clássico que pode ser facilmente automatizado com um
+                loop.</p>
+            <p><strong>Objetivo:</strong> Gerar tabuadas automaticamente usando loops.</p>
+            <div class="ferramenta-container">
+                <label for="numero2">Número:</label>
+                <input type="number" id="numero2" value="7">
+                <button onclick="gerarTabuada()">Gerar Tabuada</button>
+                <p><strong>Tabuada:</strong>
+                <ul id="tabuada2"></ul>
+                </p>
+            </div>
+            <p><strong>Instruções:</strong> Digite um número no campo 'Número' e clique em 'Gerar Tabuada'.</p>
+            <p><strong>Exemplo:</strong> Número: 7 -> Saída: 7 x 1 = 7, 7 x 2 = 14, etc.</p>
+
+            <button class="toggle-code-btn" data-target="code2">Ver Código</button>
+            <pre class="code-display" id="code2"><code>
+function gerarTabuada() {
+  let numero = parseInt(document.getElementById("numero2").value);
+  let tabuada = document.getElementById("tabuada2");
+
+  tabuada.innerHTML = ""; // Limpa a tabuada anterior
+
+  if (isNaN(numero)) {
+    tabuada.innerHTML = "Por favor, insira um número válido.";
+    return;
+  }
+
+  for (let i = 1; i <= 10; i++) {
+    let resultadoCalc = numero * i;
+    let item = document.createElement("li");
+    item.textContent = `${numero} x ${i} = ${resultadoCalc}`;
+    tabuada.appendChild(item);
+  }
+}
+            </code></pre>
+        </section>
+        
+        <section class="exercicio-card">
+            <h3>Exercício 3: Somando Números com Loops: Calculando Totais</h3>
+            <p><strong>Introdução Teórica:</strong> Neste exercício final, usaremos o loop <em>for</em> para realizar
+                uma soma acumulativa, somando vários números em sequência dentro de um intervalo.</p>
+            <p><strong>Objetivo:</strong> Calcular a soma de números em um intervalo usando loops.</p>
+            <div class="ferramenta-container">
+                <label for="inicio3">Início:</label>
+                <input type="number" id="inicio3" value="1">
+                <label for="fim3">Fim:</label>
+                <input type="number" id="fim3" value="10">
+                <button onclick="somarIntervalo()">Somar</button>
+                <p><strong>Resultado da Soma:</strong> <span id="resultado3"></span></p>
+            </div>
+            <p><strong>Instruções:</strong> Digite o início e o fim do intervalo, depois clique em 'Somar'.</p>
+            <p><strong>Exemplo:</strong> Início: 1, Fim: 10 -> Saída: A soma do intervalo é: 55</p>
+        
+            <button class="toggle-code-btn" data-target="code3">Ver Código</button>
+            <pre class="code-display" id="code3"><code>
+        function somarIntervalo() {
+          let inicio = parseInt(document.getElementById("inicio3").value);
+          let fim = parseInt(document.getElementById("fim3").value);
+          let resultado = document.getElementById("resultado3");
+        
+          if (isNaN(inicio) || isNaN(fim)) {
+            resultado.textContent = "Por favor, insira números válidos.";
+            return;
+          }
+        
+          let soma = 0;
+          let menor = Math.min(inicio, fim);
+          let maior = Math.max(inicio, fim);
+        
+          for (let i = menor; i <= maior; i++) {
+            soma += i;
+          }
+        
+          resultado.textContent = `A soma do intervalo é: ${soma}`;
+        }
+                    </code></pre>
+        </section>
+            <section class="exercicio-card">
+                <h2>Seu Playground de Lógica: Carrinho na Rua!</h2>
+                <p>Prepare-se para uma aventura! Neste playground, você vai controlar um carrinho usando blocos de
+                    comando. Arraste e solte os blocos na área de programação para dar instruções ao carrinho. É a sua
+                    chance de pensar como um programador e ver sua lógica em ação!</p>
+                <p><strong>Objetivo:</strong> Levar o carrinho do ponto inicial ao ponto final, ou simplesmente explorar
+                    o mapa. Use sua criatividade!</p>
+
+                <div class="playground-container">
+                    <div class="paleta-blocos">
+                        <h4>Comandos Disponíveis</h4>
+                        <div class="bloco" draggable="true" data-command="mover" data-value="1">Mover Frente (1x)</div>
+                        <div class="bloco" draggable="true" data-command="virar" data-value="direita">Virar Direita
+                        </div>
+                        <div class="bloco" draggable="true" data-command="virar" data-value="esquerda">Virar Esquerda
+                        </div>
+                        <div class="bloco bloco-loop" draggable="true" data-command="repetir" data-value="2">Repetir
+                            (2x)</div>
+                        <div class="bloco bloco-loop" draggable="true" data-command="repetir" data-value="3">Repetir
+                            (3x)</div>
+                        <div class="bloco bloco-loop" draggable="true" data-command="repetir" data-value="5">Repetir
+                            (5x)</div>
+                    </div>
+                    <div class="area-programacao" ondrop="soltarBloco(event)" ondragover="permitirSoltar(event)">
+                        <h4>Sua Programação</h4>
+                        <p class="placeholder-area">Arraste os comandos para cá!</p>
+                    </div>
+                    <div class="area-jogo">
+                        <h4>Mapa do Carrinho</h4>
+                        <div id="mapa">
+                            <div id="carrinho"></div>
+                            <div id="ponto-chegada"></div>
+                        </div>
+                        <div class="controles-playground">
+                            <button id="btnExecutarPlayground">Executar</button>
+                            <button id="btnResetarPlayground">Resetar</button>
+                        </div>
+                        <p><strong>Log:</strong> <span id="logPlayground"></span></p>
+                    </div>
+                </div>
+            </section>
+
+    <div id="gameOverlay" class="hidden">
+        <div id="messageBox">
+            <h2 id="messageTitle"></h2>
+            <p id="messageText"></p>
+            <button id="closeOverlayButton">Continuar</button>
+        </div>
+    </div>
+</div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Projeto de Extensão de Engenharia de Software. Todos os direitos reservados.</p>
+        <p>Desenvolvido com foco na difusão cultural e tecnológica.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
