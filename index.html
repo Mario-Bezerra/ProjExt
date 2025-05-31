@@ -28,10 +28,29 @@
 
         <section class="exercicio-card">
             <h3>Exercício 1: Contando com os Loops: Progressivo e Regressivo</h3>
-            <p><strong>Introdução Teórica:</strong> Neste exercício, vamos aprender sobre os <em>loops</em>, que são
-                estruturas de programação que nos permitem repetir um conjunto de instruções várias vezes. Os loops são
-                essenciais para automatizar tarefas repetitivas. Vamos usar o loop <em>for</em>, que é um dos mais
-                comuns.</p>
+            <p><strong>Introdução Teórica:</strong>
+                O Que São os Loops e Por Que Eles São Nossos Amigos Robôs!
+                <br>
+                Imagina que você tem um brinquedo bem legal, tipo um carrinho de controle remoto. E você quer que esse carrinho
+                faça a mesma coisa várias e várias vezes, por exemplo, ir pra frente, virar, ir pra frente de novo e virar de
+                novo. Você não ia querer ter que apertar os botões toda hora, né? Seria muito chato!
+                <br>
+                É aí que entram os loops! Pense nos loops como umas "instruções repetitivas" que a gente dá para o computador. É
+                como se a gente dissesse: "Ei, computador! Faça isso aqui um montão de vezes sem parar, até eu te dizer para
+                parar ou até você chegar em um certo número."
+                <br>
+                É tipo um robô muito obediente que faz uma tarefa repetida pra gente. Se você quer que ele diga "Olá!" 10 vezes,
+                em vez de você ter que escrever "Olá!" 10 vezes, você só diz para o robô: "Robô, diga 'Olá!' 10 vezes!" E ele
+                faz!
+                <br>
+                Neste exercício, a gente vai usar um tipo de loop que se chama for. O for é como se a gente dissesse para o
+                robô: "Robô, <em>PARA CADA</em> uma dessas coisas (ou <em>PARA CADA</em> vez que eu te disser), faça isso!" Por exemplo: <em>"PARA
+                CADA</em> dia da semana, tome café da manhã." Ou <em>"PARA CADA</em> amigo que vier na festa, dê um pedaço de bolo."
+                <br>
+                Então, os loops são nossos amigos robôs que nos ajudam a fazer tarefas chatas e repetitivas de um jeito super
+                rápido e divertido!
+                comuns.
+            </p>
             <p><strong>Objetivo:</strong> Aprender a usar loops para contagens (progressiva e regressiva).</p>
             <div class="ferramenta-container">
                 <label for="inicio1">Início:</label>
@@ -44,41 +63,57 @@
             <p><strong>Instruções:</strong> Insira um número no campo 'Início' e outro no campo 'Fim', depois clique em
                 'Contar'.</p>
             <p><strong>Exemplo:</strong> Início: 1, Fim: 5 -> Saída: 1 2 3 4 5</p>
-
+        
             <button class="toggle-code-btn" data-target="code1">Ver Código</button>
             <pre class="code-display" id="code1"><code>
-function contar() {
-  let inicio = parseInt(document.getElementById("inicio1").value);
-  let fim = parseInt(document.getElementById("fim1").value);
-  let resultado = document.getElementById("resultado1");
-
-  resultado.innerHTML = ""; // Limpa o resultado anterior
-
-  if (isNaN(inicio) || isNaN(fim)) {
-    resultado.innerHTML = "Por favor, insira números válidos.";
-    return;
-  }
-
-  if (inicio < fim) {
-    for (let i = inicio; i <= fim; i++) {
-      resultado.innerHTML += i + " ";
-    }
-  } else if (inicio > fim) {
-    for (let i = inicio; i >= fim; i--) {
-      resultado.innerHTML += i + " ";
-    }
-  } else {
-    resultado.innerHTML = "Os números são iguais!";
-  }
-}
-            </code></pre>
+        function contar() {
+          let inicio = parseInt(document.getElementById("inicio1").value);
+          let fim = parseInt(document.getElementById("fim1").value);
+          let resultado = document.getElementById("resultado1");
+        
+          resultado.innerHTML = ""; // Limpa o resultado anterior
+        
+          if (isNaN(inicio) || isNaN(fim)) {
+            resultado.innerHTML = "Por favor, insira números válidos.";
+            return;
+          }
+        
+          if (inicio < fim) {
+            for (let i = inicio; i <= fim; i++) {
+              resultado.innerHTML += i + " ";
+            }
+          } else if (inicio > fim) {
+            for (let i = inicio; i >= fim; i--) {
+              resultado.innerHTML += i + " ";
+            }
+          } else {
+            resultado.innerHTML = "Os números são iguais!";
+          }
+        }
+                    </code></pre>
         </section>
 
         <section class="exercicio-card">
             <h3>Exercício 2: Dominando a Tabuada com Loops</h3>
-            <p><strong>Introdução Teórica:</strong> Vamos continuar usando o loop <em>for</em> para realizar cálculos
-                matemáticos repetitivos. A tabuada é um exemplo clássico que pode ser facilmente automatizado com um
-                loop.</p>
+            <p><strong>Introdução Teórica:</strong> Lembra que a gente falou que os loops são como robôs que fazem coisas
+                repetitivas? Pois é! Agora a gente vai usar nosso amigo robô for para fazer algo super legal e que todo mundo já
+                viu: a tabuada!
+                <br>
+                Imagina que você está aprendendo a tabuada do 2. Você sabe que é 2 vezes 1 igual a 2, 2 vezes 2 igual a 4, 2 vezes 3
+                igual a 6, e assim por diante. Mas e se a gente quisesse escrever a tabuada do 2 até o 100? Ia demorar uma
+                eternidade pra gente escrever tudo, né?
+                <br>
+                Com o loop for, a gente pode pedir para o nosso robô fazer isso pra gente rapidinho! A gente pode dizer assim:
+                "Robô, eu quero que você calcule a tabuada do 2. PARA CADA número de 1 até 10 (ou até onde eu quiser), multiplique o
+                2 por esse número e me diga o resultado!"
+                <br>
+                É como se o robô tivesse uma lista de números (1, 2, 3, 4...) e, PARA CADA número da lista, ele faz a continha de
+                vezes. Ele é muito bom em matemática!
+                <br>
+                Então, os loops são incríveis não só para repetir coisas simples, mas também para fazer um montão de cálculos que
+                seriam chatos e demorados pra gente fazer na mão! A tabuada é só um exemplo de como o nosso robô for pode nos ajudar
+                a ser super rápidos com os números!
+            </p>
             <p><strong>Objetivo:</strong> Gerar tabuadas automaticamente usando loops.</p>
             <div class="ferramenta-container">
                 <label for="numero2">Número:</label>
@@ -117,7 +152,17 @@ function gerarTabuada() {
         <section class="exercicio-card">
             <h3>Exercício 3: Somando Números com Loops: Calculando Totais</h3>
             <p><strong>Introdução Teórica:</strong> Neste exercício final, usaremos o loop <em>for</em> para realizar
-                uma soma acumulativa, somando vários números em sequência dentro de um intervalo.</p>
+                uma soma acumulativa, somando vários números em sequência dentro de um intervalo.
+                <br>
+                O que é isso? Imagina que você tem uma caixinha de tesouros vazia. Aí você encontra uma moeda de 1 real e coloca na
+                caixinha. Agora você tem 1 real. Depois, você encontra mais uma moeda de 2 reais e coloca na caixinha. Agora você
+                tem 1 real mais 2 reais, que dá 3 reais. Depois mais uma moeda de 3 reais, e assim por diante. Você está acumulando
+                (juntando) o valor dos tesouros na sua caixinha.
+                <br>
+                Com o loop for, a gente pode fazer o computador fazer essa mesma coisa! A gente pode dizer para ele: "Computador,
+                comece com um zero na sua caixinha. Agora, PARA CADA número que eu te der (por exemplo, os números de 1 até 5),
+                adicione esse número na sua caixinha!"
+            </p>
             <p><strong>Objetivo:</strong> Calcular a soma de números em um intervalo usando loops.</p>
             <div class="ferramenta-container">
                 <label for="inicio3">Início:</label>
@@ -207,8 +252,9 @@ function gerarTabuada() {
     </main>
 
     <footer>
-        <p>&copy; 2024 Projeto de Extensão de Engenharia de Software. Todos os direitos reservados.</p>
+        <p>&copy; 2025 Projeto de Extensão de Engenharia de Software. Todos os direitos reservados.</p>
         <p>Desenvolvido com foco na difusão cultural e tecnológica.</p>
+        <p>Mario Gabriel Santos Bezerra</p>
     </footer>
 
     <script src="script.js"></script>
